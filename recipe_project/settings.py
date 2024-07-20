@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db4vv6unk6d7ge',
+        'USER': 'u1ndsuahf4ecs',
+        'PASSWORD': 'p8a17b1275a17e24ff38d48cf75828df3ab8e58aadcf05ce42c723d489b1f463f',
+        'HOST': 'cbec45869p4jbu.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
