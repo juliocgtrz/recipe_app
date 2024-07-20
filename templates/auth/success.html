@@ -1,0 +1,10 @@
+<h1 style="text-align: center">You've successfully logged out.</h1>          {% comment %} print heading {% endcomment %}
+<div style="text-align: center">
+    <a href ="{%url 'login' %}"> Login </a>
+</div>
+
+{% comment %} check for error message {% endcomment %}
+{% if error_message %}
+   {{error_message}}
+{% endif %}
+

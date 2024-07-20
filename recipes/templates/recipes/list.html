@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/list.css' %}">
+        <title>
+            {% block title %}Recipes List{% endblock %}
+        </title>
+    </head>
+    <body>
+        {% block content %}
+            <h1 class="recipes-header">Recipes List</h1>
+            <br>
+            <!-- Table displaying recipes and their images -->
+            <table border="1" cellpadding="5" cellspacing="5">
+                <tr>
+                    <td>Recipe Name</td>
+                    <td>Image</td>
+                </tr>
+
+                {% for object in object_list %}
+                <tr>
+                    <td>
+                        <a class="recipe-name" href="{{object.get_absolute_url}}">{{object.name}}</a>
+                    </td>
+                    
+                    <td>
+                        <a href="{{object.get_absolute_url}}"><img src="{{object.pic.url}}"></a>
+                    </td>
+                </tr>
+                
+                <br>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endblock %}
+    </body>
+</html>

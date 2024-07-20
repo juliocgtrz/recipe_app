@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.recipe-name {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+.recipe-name:hover {
+    text-decoration: underline;
+}
+
+.recipe-name:visited {
+    color: purple;
+}
+
+/* Table styles */
+table {
+    width: 60%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+table td,
+table th {
+    padding: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Ensures images maintain aspect ratio while having the same dimensions */
+table img {
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+}

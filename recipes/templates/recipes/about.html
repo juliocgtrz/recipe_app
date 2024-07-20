@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Recipes - About{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/about.css' %}">
+    </head>
+
+    <body>
+        {% block content %}
+            <h1>About Me</h1>
+
+            <div class="about-container">
+                <h2 class="contact-header">Contact Info</h2>
+                
+                <div>Email: juliocgtrz@gmail.com</div>
+
+                <div>Portfolio: <a href="https://juliocgtrz.github.io/portfolio/" target="_blank">juliocgtrz.github.io/portfolio/</a></div>
+
+                <div>LinkedIn: <a href="https://linkedin.com/in/juliocgtrz" target="_blank">https://linkedin.com/in/juliocgtrz</a></div>
+
+                <div>GitHub: <a href="https://github.com/juliocgtrz" target="_blank">https://github.com/juliocgtrz</a></div>
+
+            </div>
+        {% endblock %}
+    </body>
+</html>

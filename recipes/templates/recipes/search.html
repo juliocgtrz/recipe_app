@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Recipes Search{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'recipes/css/search.css' %}">
+    </head>
+
+    <body>
+        {% block content %}
+            <h1 class="search-header" style="text-align: center">Search for recipes</h1>
+
+            <!-- Search form -->
+            <div class="search-form" style="text-align: center">
+                <form method="POST" novalidate>
+                    {% csrf_token %}
+
+                    <!-- Dropdown to select the search criterion -->
+                    {{ form.search_by.label_tag }} {{ form.search_by }}
+
+                    <!-- Div for inputting the recipe name, hidden by default -->
+                    <div id="search_term_div" style="display: none;">
+                        {{ form.search_term.label_tag }} {{ form.search_term }}
+                    </div>
+
+                    <!-- Div for inputting the cooking time, hidden by default -->
+                    <div id="cooking_time_div" style="display: none;">
+                        {{ form.cooking_time.label_tag }} {{ form.cooking_time }}
+                    </div>
+
+                    <!-- Div for selecting the difficulty, hidden by default -->
+                    <div id="difficulty_div" style="display: none;">
+                        {{ form.difficulty.label_tag }} {{ form.difficulty }}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+
+            <br>
+
+            <!-- Checks if there is any data in recipes_df -->
+            {% if recipes_df %}
+                <h2 class="results-header" style="text-align: center">Search Results</h2>
+                {{recipes_df | safe}}
+
+                <br>
+
+                <!-- Bar Chart -->
+                <h3 style="text-align: center">Bar Chart: Cooking Time per Recipe</h3>
+                <img class="chart-image" src="data:image/png;base64,{{ bar_chart }}" alt="Bar Chart">
+
+                <!-- Pie Chart -->
+                <h3 style="text-align: center">Pie Chart: Percentage of Recipe Difficulties</h3>
+                <img class="chart-image" src="data:image/png;base64,{{ pie_chart }}" alt="Pie Chart">
+
+                <!-- Line Chart -->
+                <h3 style="text-align: center">Line Chart: Number of Ingredients per Recipe</h3>
+                <img class="chart-image" src="data:image/png;base64,{{ line_chart }}" alt="Line Chart">
+
+            {% else %}
+                <h3 style="text-align: center">Nothing here yet..</h3>
+            {% endif %}
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Gets references to the form elements
+                    const searchByField = document.getElementById("id_search_by");
+                    const searchTermDiv = document.getElementById("search_term_div");
+                    const cookingTimeDiv = document.getElementById("cooking_time_div");
+                    const difficultyDiv = document.getElementById("difficulty_div");
+            
+                    // Function to update the visibility of search input fields based on the selected criterion
+                    function updateSearchFields() {
+                        // Gets the selected value from the dropdown
+                        const searchByValue = searchByField.value;
+
+                        // Hide all search input fields by default
+                        searchTermDiv.style.display = "none";
+                        cookingTimeDiv.style.display = "none";
+                        difficultyDiv.style.display = "none";
+            
+                        // Show the appropriate input field based on the selected search criterion
+                        if (searchByValue === "name") {
+                            searchTermDiv.style.display = "block";
+                        } else if (searchByValue === "cooking_time") {
+                            cookingTimeDiv.style.display = "block";
+                        } else if (searchByValue === "difficulty") {
+                            difficultyDiv.style.display = "block";
+                        }
+                    }
+                    
+                    // Add event listener to the dropdown to update search fields when the selected value changes
+                    searchByField.addEventListener("change", updateSearchFields);
+
+                    // Initial call to set the correct fields based on default or current selected value
+                    updateSearchFields();
+                });
+            </script>
+        {% endblock %}
+    </body>
+</html>
