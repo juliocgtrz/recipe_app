@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1:8000",
     "127.0.0.1",
+    "boiling-fortress-64705-1b9c8b0c4111.herokuapp.com",
 ]
 
 
