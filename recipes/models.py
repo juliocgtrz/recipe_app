@@ -14,6 +14,7 @@ class Recipe(models.Model):
     pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
     
     # determine recipe difficulty
+    @property
     def difficulty(self):
         ingredients = self.ingredients.split(", ")
         if self.cooking_time < 10 and len(ingredients) < 4:
