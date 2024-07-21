@@ -1,18 +1,18 @@
 from django.db import models
 from django.shortcuts import reverse
 
+
 # Create your models here.
 class Recipe(models.Model):
     # class attributes
     name = models.CharField(max_length=50)
     ingredients = models.CharField(
-        max_length=225,
-        help_text="Enter the ingredients, separated by a comma"
+        max_length=225, help_text="Enter the ingredients, separated by a comma"
     )
     cooking_time = models.IntegerField(help_text="Enter cooking time in minutes")
     difficulty = None
-    pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
-    
+    pic = models.ImageField(upload_to="recipes", default="no_picture.jpg")
+
     # determine recipe difficulty
     @property
     def difficulty(self):
