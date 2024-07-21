@@ -32,7 +32,7 @@ This project focuses on creating a web application using the Django framework. D
 
 <h2>Installation</h2>
 <ol>
-  <li>Clone the repository: git clone <https://github.com/juliocgtrz/recipe_app></li>
+  <li>Clone the repository: git clone https://github.com/juliocgtrz/recipe_app</li>
   <li>Create and activate virtual environment: python -m venv venv</li>
   <li>Install dependencies: pip install -r requirements.txt</li>
   <li>Apply database migrations: python manage.py migrate</li>
